@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Image } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
+import HeroImg from '../../../../assets/images/hero.jpg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,16 +41,16 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Image
-        src="https://assets.maccarianagency.com/the-front/photos/about/hero-image.png"
-        srcSet="https://assets.maccarianagency.com/the-front/photos/about/hero-image.png 2x"
+        src={HeroImg}
+        srcSet={`${HeroImg} 2x`}
         alt="About"
         className={classes.image}
         lazyProps={{ width: '100%', height: '100%' }}
       />
       <Section className={classes.section}>
         <SectionHeader
-          title="Our work"
-          subtitle="We are founded by a leading academic and researcher in the field of Industrial Systems Engineering."
+          title="Betanyeli"
+          subtitle="About Beta ... "
           align="left"
           data-aos="fade-up"
           disableGutter

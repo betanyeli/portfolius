@@ -333,7 +333,10 @@ const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
         [classes.root]: true,
       })}
     >
-      <Topbar onSidebarOpen={handleSidebarOpen} pages={pages} themeMode={themeMode} themeToggler={themeToggler} />
+      <Topbar onSidebarOpen={handleSidebarOpen} 
+      pages={pages} 
+      themeMode={themeMode} 
+      themeToggler={themeToggler} />
       <Sidebar
         onClose={handleSidebarClose}
         open={open}

@@ -15,6 +15,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Image, DarkModeToggler } from 'components/atoms';
+import Alias from '../../../../assets/images/alias-beta.png';
 
 const useStyles = makeStyles(theme => ({
   flexGrow: {
@@ -84,11 +85,11 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.dark,
   },
   logoContainer: {
-    width: 100,
-    height: 28,
+    width: 150,
+    height: 100,
     [theme.breakpoints.up('md')]: {
       width: 120,
-      height: 32,
+      height: 70,
     },
   },
   logoImage: {
@@ -116,7 +117,7 @@ const useStyles = makeStyles(theme => ({
 interface Props {
   className?: string;
   onSidebarOpen: Function,
-  pages: PagesProps;
+  pages?: PagesProps;
   themeMode: string;
   themeToggler: Function;
 };
@@ -249,7 +250,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
         <a href="/" title="thefront">
           <Image
             className={classes.logoImage}
-            src={themeMode === 'light' ? 'https://assets.maccarianagency.com/the-front/logos/logo.svg' : 'https://assets.maccarianagency.com/the-front/logos/logo-negative.svg'}
+            src={Alias}
             alt="thefront"
             lazy={false}
           />
@@ -258,88 +259,15 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
       <div className={classes.flexGrow} />
       <Hidden smDown>
         <List disablePadding className={classes.navigationContainer}>
-          {[landings, supportedPages, account].map((page, i) => (
-            <div key={page.id}>
-              <ListItem
-                aria-describedby={page.id}
-                onClick={e => handleClick(e, page.id)}
-                className={clsx(
-                  classes.listItem,
-                  openedPopoverId === page.id ? classes.listItemActive : '',
-                )}
-              >
-                <Typography
-                  variant="body1"
-                  color="textPrimary"
-                  className={clsx(classes.listItemText, 'menu-item')}
-                >
-                  {page.title}
-                </Typography>
-                <ListItemIcon className={classes.listItemIcon}>
-                  <ExpandMoreIcon
-                    className={
-                      openedPopoverId === page.id ? classes.expandOpen : ''
-                    }
-                    fontSize="small"
-                  />
-                </ListItemIcon>
-              </ListItem>
-              <Popover
-                elevation={1}
-                id={page.id}
-                open={openedPopoverId === page.id}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'center',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'center',
-                }}
-                classes={{ paper: classes.popover }}
-              >
-                <div>{renderPages(page.id)}</div>
-              </Popover>
-            </div>
-          ))}
+        
           <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
-            <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} />
+            {/* <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} /> */}
           </ListItem>
-          <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
-            <Button
-              variant="outlined"
-              component="a"
-              href="/documentation"
-            >
-              Documentation
-            </Button>
-          </ListItem>
-          <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
-            <Button
-              variant="contained"
-              color="primary"
-              component="a"
-              target="blank"
-              href="https://material-ui.com/store/items/the-front-landing-page/"
-              className={classes.listItemButton}
-            >
-              Buy Now
-            </Button>
-          </ListItem>
+          
+          
         </List>
       </Hidden>
-      <Hidden mdUp>
-        <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} />
-        <IconButton
-          className={classes.iconButton}
-          onClick={() => onSidebarOpen()}
-          aria-label="Menu"
-        >
-          <MenuIcon />
-        </IconButton>
-      </Hidden>
+     
     </Toolbar>
   );
 };

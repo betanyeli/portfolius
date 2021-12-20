@@ -61,13 +61,13 @@ import {
 const Routes = (): JSX.Element => {
   return (
     <Switch>
-      <Route
+       <Route
         exact
         path="/"
         render={matchProps => (
           <WithLayout
             {...matchProps}
-            component={IndexView}
+            component={PortfolioPageView}
             layout={MainLayout}
           />
         )}
@@ -83,7 +83,7 @@ const Routes = (): JSX.Element => {
           />
         )}
       />
-      <Route
+      {/* <Route
         exact
         path="/career-listing"
         render={matchProps => (
@@ -566,7 +566,7 @@ const Routes = (): JSX.Element => {
             layout={MinimalLayout}
           />
         )}
-      />
+      /> */}
       <Route
         exact
         path="/not-found-cover"
